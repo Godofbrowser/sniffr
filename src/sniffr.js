@@ -54,7 +54,6 @@
   };
 
   var UNKNOWN = "Unknown";
-  var isBrowser = typeof window !== 'undefined'
 
   var propertyNames = Object.keys(properties);
 
@@ -102,8 +101,7 @@
 
   Sniffr.prototype.sniff = function(userAgentString) {
     var self = this;
-    var fallbackUserAgent = isBrowser ? navigator.userAgent : ""
-    var userAgent = (userAgentString || fallbackUserAgent).toLowerCase();
+    var userAgent = (userAgentString || navigator.userAgent || "").toLowerCase();
 
     propertyNames.forEach(function(propertyName) {
       determineProperty(self, propertyName, userAgent);
